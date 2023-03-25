@@ -51,19 +51,19 @@
 //       this.location = location;
 //   }
 //   public static void printPlace() {
-//       System.out.println("Regulator of Indian banks is: " + City.place);
-//       //cannot access non-static member from static method (same in case of main function)
+//       System.out.println("LOCATION: " + City.place);
+//       //cannot access non-static member from static method
 //   }
 // }
 
 
 
-public class Static {
+public class Static { //static variable
   public static void main(String[] args) {
       System.out.println(Student.subject);
 
-      Student sweta = new Student("Sweta", 51, "Python");
-      System.out.println("Student: " + sweta);
+      Student s = new Student("Sweta", 51, "Python");
+      System.out.println("Student: " + s);
 //prints python until we change value
       System.out.println(Student.subject);
   }
@@ -73,18 +73,17 @@ class Student { //static variable
   private Integer roll;
   public static String subject = "java";
 
-  Student(String name, Integer roll, String scisubjectentificName) {
-      this.name = name;
+  Student(String name, Integer roll, String subject) {
+      this.name = name; //refers to current object
       this.roll = roll;
-//    this.subject = subject;           // gives warning: Static member accessed by instance reference
-      Student.subject = subject;
+      this.subject = subject;           
   }
-  @Override
+  @Override //override element of superclass
   public String toString() {
       return "Student{" +
               "name='" + name + '\'' +
               ", roll=" + roll + '\'' +
-              ", subject=" + Student.subject +
+              ", subject=" + subject +
               '}';
   }
 }
